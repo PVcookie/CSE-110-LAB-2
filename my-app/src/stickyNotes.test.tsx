@@ -43,13 +43,13 @@ describe("Create StickyNote", () => {
     fireEvent.change(contentInput, { target: { value: "Initial Content" } });
     fireEvent.click(createButton);
 
-    // Simulate editing the note
+    // edit the note
     const editButtons = screen.getAllByText("Edit");
     fireEvent.click(editButtons[0]);
 
     fireEvent.change(titleInput, { target: { value: "Updated Title" } });
     fireEvent.change(contentInput, { target: { value: "Updated Content" } });
-    fireEvent.click(createButton); // Simulate saving the updated note
+    fireEvent.click(createButton); // save the updated note
 
     // Assert that the note is updated
     expect(screen.getByText("Updated Title")).toBeInTheDocument();
@@ -68,7 +68,7 @@ describe("Create StickyNote", () => {
     fireEvent.change(contentInput, { target: { value: "Delete Note Content" } });
     fireEvent.click(createButton);
 
-    // Simulate deleting the note
+    // delete the note
     const deleteButtons = screen.getAllByText("x");
     fireEvent.click(deleteButtons[0]);
 

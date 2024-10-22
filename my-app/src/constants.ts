@@ -1,6 +1,5 @@
 import { Label, GroceryItem } from "./types";
 
-// Existing dummy notes list (no changes here)
 export const dummyNotesList = [
     {
         id: 1,
@@ -39,7 +38,7 @@ export const dummyNotesList = [
     },
 ];
 
-// Define the dummyGroceryList
+
 export const dummyGroceryList: GroceryItem[] = [
     { name: "Apples", isPurchased: false },
     { name: "Bread", isPurchased: true },

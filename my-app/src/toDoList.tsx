@@ -1,15 +1,15 @@
 import React, { ChangeEventHandler } from "react";
 import "./App.css";
 import { useState } from "react";
-import { GroceryItem } from "./types"; // Import GroceryItem type
-import { dummyGroceryList } from "./constants"; // Import dummyGroceryList
+import { GroceryItem } from "./types"; 
+import { dummyGroceryList } from "./constants"; 
 import { useParams } from "react-router-dom";
 
-// Define the ToDoList component and export it
+
 export function ToDoList() {
-  const [items, setItems] = useState<GroceryItem[]>(dummyGroceryList); // Initialize items
+  const [items, setItems] = useState<GroceryItem[]>(dummyGroceryList); 
   const [numRemainingItems, setNumRemainingItems] = useState(
-    items.filter(item => !item.isPurchased).length // Initialize with the number of unchecked items
+    items.filter(item => !item.isPurchased).length 
   );
   const { name } = useParams();
 

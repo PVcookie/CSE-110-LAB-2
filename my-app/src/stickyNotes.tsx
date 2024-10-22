@@ -1,16 +1,14 @@
 import './App.css';
-import { Label, Note } from "./types"; // Import the Label and Note types
-import { dummyNotesList } from "./constants"; // Import dummy notes list
-import React, { useState, useEffect, useContext } from 'react'; // Import necessary hooks
-import { ThemeContext, themes } from './themeContext'; // Import ThemeContext
+import { Label, Note } from "./types";
+import { dummyNotesList } from "./constants";
+import React, { useState, useEffect, useContext } from 'react'; 
+import { ThemeContext, themes } from './themeContext';
 
 // Sticky Notes component
 export const StickyNotes = () => {
-  // State for notes and favorite note titles
   const [notes, setNotes] = useState<Note[]>(dummyNotesList);
   const [favoriteTitles, setFavoriteTitles] = useState<string[]>([]); 
 
-  // Initial empty note state
   const initialNote = {
     id: -1,
     title: "",
@@ -19,16 +17,16 @@ export const StickyNotes = () => {
     favorite: false, 
   };
 
-  const [createNote, setCreateNote] = useState<Note>(initialNote); // For note creation/editing
-  const [isEditing, setIsEditing] = useState(false); // Track editing mode
-  const [currentTheme, setCurrentTheme] = useState(themes.light); // Initialize theme state with light theme
+  const [createNote, setCreateNote] = useState<Note>(initialNote);
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState(themes.light);
 
-  // Function to toggle theme between light and dark
+  //toggle theme between light and dark
   const toggleTheme = () => {
     setCurrentTheme(currentTheme === themes.light ? themes.dark : themes.light);
   };
 
-  // Handle creating or editing a note
+  //creating or editing a note
   const createNoteHandler = (event: React.FormEvent) => {
     event.preventDefault();
     if (isEditing) {
@@ -43,12 +41,12 @@ export const StickyNotes = () => {
     setCreateNote(initialNote); // Reset the form
   };
 
-  // Handle deleting a note
+  //deleting a note
   const handleDelete = (id: number) => {
     setNotes(notes.filter((item) => item.id !== id));
   };
 
-  // Handle toggling the favorite status of a note
+  //toggling the favorite status of a note
   const handleFavorite = (id: number) => {
     setNotes(
       notes.map((note) =>
@@ -57,29 +55,29 @@ export const StickyNotes = () => {
     );
   };
 
-  // Handle editing a note
+  //editing a note
   const handleEdit = (id: number) => {
     const noteToEdit = notes.find((note) => note.id === id);
     if (noteToEdit) {
-      setCreateNote(noteToEdit); // Pre-fill form with selected note
-      setIsEditing(true); // Set editing mode
+      setCreateNote(noteToEdit); // Pre-fill form with selected note's content
+      setIsEditing(true);
     }
   };
 
-  // Use useEffect to update the favorite notes list whenever notes change
+
   useEffect(() => {
     const favoriteTitlesList = notes
-      .filter(note => note.favorite) // Filter favorite notes
-      .map(note => note.title); // Get their titles
+      .filter(note => note.favorite) 
+      .map(note => note.title);
 
-    setFavoriteTitles(favoriteTitlesList); // Update favorite titles state
-    console.log("Favorite Note Titles: ", favoriteTitlesList); // Log the favorite titles list
-  }, [notes]); // Effect runs whenever `notes` changes
+    setFavoriteTitles(favoriteTitlesList); 
+    console.log("Favorite Note Titles: ", favoriteTitlesList); 
+  }, [notes]); 
 
   return (
-    <ThemeContext.Provider value={currentTheme}> {/* Wrap the content with ThemeContext.Provider */}
+    <ThemeContext.Provider value={currentTheme}> {}
       <div className='app-container' style={{ background: currentTheme.background, color: currentTheme.foreground, minHeight: '100vh', padding: '20px' }}>
-        {/* Form for creating or editing a note */}
+        {}
         <form className="note-form" onSubmit={createNoteHandler}>
           <div>
             <input

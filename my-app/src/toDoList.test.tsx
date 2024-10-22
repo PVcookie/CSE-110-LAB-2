@@ -31,7 +31,7 @@ describe("ToDoList Component", () => {
         const ramenCheckbox = screen.getByLabelText("Ramen");
         fireEvent.click(ramenCheckbox); // Check Ramen
     
-        // Assert that milk is checked
+        // Assert that ramen is checked
         expect(ramenCheckbox).toBeChecked();
       });
     });
